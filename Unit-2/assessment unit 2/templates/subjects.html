@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block mainContent %}
+<div class="container" >
+
+    <div class="row">
+        <div class="col">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Subjects</h2>
+            <p>Select from one of your subjects below</p>
+            {% for row in student_subjects %}
+            <p><a href="/subject_topics?ssid={{row['subject_code']}}">{{row['subject_code']}}</a></p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

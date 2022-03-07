@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block mainContent %}
+<div class="container" >
+
+    <div class="row">
+        <div class="col">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>{{ thesubject_results['subject_code'] }}</h1>
+
+            {% if session['is_teacher'] == 'True' %}
+            <p><a href="/topicsform">Create a topic</a></p>
+            {% endif %}
+            <hr>
+            <p>Select from one of your topics below</p>
+            {% for row in topic_results %}
+            <p><a href="/videos?tid={{row['topic_name']}}">{{row['topic_name']}}</a></p>
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

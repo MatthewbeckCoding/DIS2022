@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors Lizard Spock</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+
+<main>
+
+    <h1 align="center">Rock Paper Scissors Lizard Spock</h1>
+
+    <div class="jumbotron shadow p-4 mb-4 bg-white" align="center">
+        <div class="row">
+            <div class="col">
+                <p>This is a first to three rock paper scissors lizard spock game versing the computer!</p>
+                <p>select your player below</p>
+                <table>
+                    <tr>
+                        <td>
+                            <a href="/?a=0"><img class="img-fluid"
+                                                 src="{{url_for('static', filename='images/'+'0'+'.png')}}" alt="rock"></a>
+                            <p align="center">rock</p>
+                        </td>
+                        <td>
+                            <a href="/?a=1"><img class="img-fluid"
+                                                 src="{{url_for('static', filename='images/'+'paper'+'.png')}}"
+                                                 alt="paper"></a>
+                            <p align="center">paper</p>
+                        </td>
+                        <td>
+                            <a href="/?a=2"><img class="img-fluid"
+                                                 src="{{url_for('static', filename='images/'+'2'+'.png')}}"
+                                                 alt="scissors"></a>
+                            <p align="center">scissors</p>
+                        </td>
+                        <td>
+                            <a href="/?a=3"><img class="img-fluid"
+                                                 src="{{url_for('static', filename='images/'+'3'+'.png')}}" alt="spock"></a>
+                            <p align="center">spock</p>
+                        </td>
+                        <td>
+                            <a href="/?a=4"><img class="img-fluid"
+                                                 src="{{url_for('static', filename='images/'+'4'+'.png')}}"
+                                                 alt="lizard"></a>
+                            <p align="center">lizard</p>
+                        </td>
+
+                    </tr>
+                </table>
+                <div class="row">
+                    <div class="col">
+                        <h4>Last Round:</h4>
+                        <p><b>you chose:</b> {{choose_player}}</p>
+                        <p><b>computer chose:</b> {{choose_computer}}</p>
+                    </div>
+                    <div class="col">
+                        <h4>Score:</h4>
+                        <p><b>Your score:</b> {{player_score}}/3</p>
+                        <p><b>computers score:</b> {{computer_score}}/3</p>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div>
+
+        {% if gameon == False %}
+        <a href="/" class="btn btn-primary">Start new game</a>
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class=" col">
+                {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+</body>
+</html>

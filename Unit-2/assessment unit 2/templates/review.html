@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block mainContent %}
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+            {% for row in review_results %}
+            <iframe  src="//www.youtube.com/embed/{{row['url']}}" frameborder="0" allowfullscreen></iframe>
+            <p>{{row['video_description']}}</p>
+            <p>{{ row['video_id']}}</p>
+            <form class="btn" action="" METHOD="POST">
+                <input type="submit" value="Approve">
+            </form>
+            <hr>
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

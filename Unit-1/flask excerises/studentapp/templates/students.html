@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block mainBlock %}
+<h1>List of Students</h1>
+
+{% for student in names %}
+    <p><a href="student_details?studentid={{student[1]}}">{{ student[0] }}</a></p>
+{% endfor %}
+{% endblock %}

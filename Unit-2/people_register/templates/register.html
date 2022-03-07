@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3>Sign up to register into da database</h3>
+
+
+            <form method="post" action="" enctype=multipart/form-data novalidate> <!--https://www.w3schools.com/tags/att_form_novalidate.asp -->
+                {{ form.csrf_token}} <!-- essential -->
+
+                <div class="form-group row">
+                    {{form.name.label (for="name", class="col-sm-2 col-form-label")}}
+                    <div class="col-sm-10">{{form.name (size=50, class="form-control") }}
+                        {% if form.name.errors %}
+                        <div class="text-danger">
+                            {% for error in form.name.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{form.age.label (for="age", class="col-sm-2 col-form-label")}}
+                    <div class="col-sm-10">{{form.age (size=50, class="form-control") }}
+                        {% if form.age.errors %}
+                        <div class="text-danger">
+                            {% for error in form.age.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    {{form.sex.label (for="sex", class="col-sm-2 col-form-label")}}
+                    <div class="col-sm-10">{{form.sex (class="form-control") }}
+                        {% if form.sex.errors %}
+                        <div class="text-danger">
+                            {% for error in form.sex.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                                <div class="form-group row">
+                    {{form.likes.label (for="likes", class="col-sm-2 col-form-label")}}
+                    <div class="col-sm-10">{{form.likes (size=50, class="form-control") }}
+                        {% if form.likes.errors %}
+                        <div class="text-danger">
+                            {% for error in form.likes.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{form.dislikes.label (for="dislikes", class="col-sm-2 col-form-label")}}
+                    <div class="col-sm-10">{{form.dislikes (size=50, class="form-control") }}
+                        {% if form.dislikes.errors %}
+                        <div class="text-danger">
+                            {% for error in form.dislikes.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group row">
+                    {{form.submit (class="btn btn-primary")}}
+                </div>
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+</html>

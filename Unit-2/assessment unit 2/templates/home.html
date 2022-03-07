@@ -1,0 +1,52 @@
+
+{% extends 'layout.html' %}
+
+{% block mainContent %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+            <h3>Latest videos in your subjects</h3>
+            <div class="container">
+
+            <div class="row align-items-center">
+            {% for row in home_results %}
+                <div class="col">
+            <iframe src="//www.youtube.com/embed/{{row['url']}}" allowfullscreen></iframe>
+                    <p>{{row['video_description']}}</p>
+                    </div>
+            {% endfor %}
+                </div>
+                </div>
+            <hr>
+            <h3>Your submitted Videos</h3>
+            <div class="container">
+
+            <div class="row align-items-center">
+            {% for row in your_results %}
+                <div class="col">
+            <iframe src="//www.youtube.com/embed/{{row['url']}}" allowfullscreen></iframe>
+                    <p>{{row['video_description']}}</p>
+                    </div>
+            {% endfor %}
+                </div>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+

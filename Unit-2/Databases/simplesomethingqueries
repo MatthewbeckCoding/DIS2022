@@ -1,0 +1,82 @@
+--SN1
+select cust_name, cr_limit
+from customers
+where cr_limit = (
+    select max(cr_limit)
+    from customers);
+
+--sn2
+select cust_name, cust_no
+from customers
+where curr_bal - cr_limit = (
+    select max(curr_bal - cr_limit)
+    from customers);
+    
+--sn3
+select cust_name
+from customers
+where cust_no = (
+    select cust_no 
+    from orders
+    where order_no = (
+        select max(order_no)
+        from orders));
+        
+--sn4
+select description
+from products
+where list_price = (
+    select max(list_price)
+    from products);
+    
+--sn5
+select prod_code
+from products
+where remake_qty * list_price = (
+    select max(remake_qty * list_price) as 'remake_cost'
+    from products);
+
+--sn6
+select cust_no
+from customers 
+where cr_limit > (
+    select cr_limit
+    from customers
+    where cust_no = 2255);
+    
+--sn7
+select cust_name
+from customers
+where cust_no in (
+    select cust_no
+    from orders
+    where order_no in (
+        select order_no
+        from order_details
+        where prod_code = 'STANK'
+        and order_price = (
+            select max(order_price)
+            from order_details
+            where prod_code = 'STANK')));
+        
+--sn8
+select order_date
+from orders
+where order_no = (
+    select order_no
+    from order_details
+    where order_qty*order_price = (
+        select max(order_qty*order_price)
+        from order_details));
+
+--sn9
+select cust_name
+from customers
+where cust_no in (
+    select min(order_no)
+from order_details
+where prod_code = 'GNOME'
+
+
+
+
